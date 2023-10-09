@@ -20,6 +20,7 @@ module Skrift
 
         @glyphcache = {}
         @colcache   = {}
+        @chcache = {}
 
         @lm = @sft.lmetrics
 
@@ -60,6 +61,7 @@ module Skrift
     
   
       def cache_glyph(gid, baseline)
+        return if gid.nil?
         mtx = @sft.gmetrics(gid)
 
         # FIXME: Not sure what to do if mtx.nil? here.
@@ -103,7 +105,9 @@ module Skrift
       def map_glyphs(str)
         # FIXME: Should probably cache by character rather than
         # glyph
-        str.to_s.each_char.map { |ch| @sft.lookup(ch.ord) }
+        str.to_s.each_char.map do |ch|
+          @chcache[ch] ||= @sft.lookup(ch.ord).to_i
+        end
       end
       
       def cache_glyphs(gl)
