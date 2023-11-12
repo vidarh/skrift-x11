@@ -1,16 +1,16 @@
 PATH
   remote: .
   specs:
-    skrift-x11 (0.1.0)
+    skrift-x11 (0.2.1)
       pure-x11
       skrift
 
 GEM
   remote: https://rubygems.org/
   specs:
-    pure-x11 (0.0.2)
+    pure-x11 (0.0.4)
     rake (13.0.6)
-    skrift (0.1.0)
+    skrift (0.2.0)
 
 PLATFORMS
   x86_64-linux
